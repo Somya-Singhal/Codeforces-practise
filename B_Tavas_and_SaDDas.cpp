@@ -51,6 +51,7 @@ double eps = 1e-12;
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
  
+/* solution->using queue
 int main()
 {
  fast_cin();
@@ -73,5 +74,29 @@ int main()
      q.push(curr*10+4);
      q.push(curr*10+7);
  }
+ return 0;
+}
+*/ 
+
+// using bitmasks
+int main()
+{
+ fast_cin();
+ char arr[20];
+ cin>>arr;
+ int x=strlen(arr);
+//  Part-1-> all no. having digit less than this original no. will be smaller
+// 2^(x-1)+2^(x-2)+.....+2^1=2(2^(x-1)-1)/(2-1)
+// Part-2-> to find no.s less than x digit current no.
+// only 7 is to be considered and position of it->2^x
+ll ans=(1<<x)-2;
+for(int i=x-1,pos=0;i>=0;i--,pos++)
+{
+if(arr[i]=='7')
+{
+    ans+=(1<<pos);
+}
+}
+cout<<(ans+1);
  return 0;
 }
