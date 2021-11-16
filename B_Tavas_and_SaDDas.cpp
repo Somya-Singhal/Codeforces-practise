@@ -51,37 +51,27 @@ double eps = 1e-12;
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
  
-
-// int solve(ll l,ll r,ll need,int alphasize){
-//     ll mid=l+(r-l)/2LL;
-//     if(need==mid)
-//     return alphasize;
-//     else if(need<mid)
-//     return solve(l,mid-1,need,alphasize-1);
-//     else
-//     return solve(mid+1,r,need,alphasize-1);
-// }
-
-int go(ll l, ll r, ll need, int alphSize)
-{
-    ll m = l + (r - l) / 2LL;
-    if (need < m)
-        return go(l, m - 1, need, alphSize - 1);
-    else if (need > m)
-        return go(m + 1, r, need, alphSize - 1);
-    else
-        return alphSize;
-}
 int main()
 {
  fast_cin();
  int n;
-    ll k;
-
-    cin >> n >> k;
-    ll sz = 1;
-    for (int i = 1; i < n; i++)
-        sz = sz * 2LL + 1LL;
-    
-    cout << go(1, sz, k, n);
+ cin>>n;
+ queue<int>q;
+ int count=0;
+ q.push(4);
+ q.push(7);
+ while(!q.empty())
+ {
+     int curr=q.front();
+     q.pop();
+     count++;
+     if(curr==n)
+     {
+         cout<<count;
+         break;
+     }
+     q.push(curr*10+4);
+     q.push(curr*10+7);
  }
+ return 0;
+}
