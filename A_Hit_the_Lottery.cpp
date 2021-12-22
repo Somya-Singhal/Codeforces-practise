@@ -51,45 +51,20 @@ double eps = 1e-12;
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
  
-
-// long long int solve(int idx,vector<int>& wt,long long int n){
-//  if(n==0)
-//  return 0;
-//  if(idx==wt.size())
-//  return INT_MAX-1;
-//  if(wt[idx]<=n)
-//  return min(1+solve(idx,wt,n-wt[idx]),solve(idx+1,wt,n));
-//  else
-//  return solve(idx+1,wt,n);
-// }
 int main()
 {
  fast_cin();
  long long int n;
  cin>>n;
- vector<int>wt={1,5,10,20,100};
- long long int dp[6][n+1];
- for(int i=0;i<6;i++)
+ vector<int>wt={100,20,10,5,1};
+ int ans=0;
+ int i=0;
+ while(n>0)
  {
-     for(long long int j=0;j<=n;j++)
-     {
-         if(i==0 && j==0)
-         dp[i][j]=0;
-         else if(j==0)
-         dp[i][j]=0;
-         else if(i==0)
-         dp[i][j]=LLONG_MAX-1;
-         else if(i==1)
-         dp[i][j]=j;
-         else
-         {
-             if(wt[i-1]<=j)
-             dp[i][j]=min(1+dp[i][j-wt[i-1]],dp[i-1][j]);
-             else
-             dp[i][j]=dp[i-1][j];
-         }
-     }
+     ans+=n/wt[i];
+     n=n%wt[i];
+     i++;
  }
- cout<<dp[5][n];
+ cout<<ans;
  return 0;
 }
