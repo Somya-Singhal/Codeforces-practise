@@ -54,36 +54,9 @@ double eps = 1e-12;
 int main()
 {
  fast_cin();
- ll t;
- cin >> t;
- for(int it=1;it<=t;it++) {
-     int n;
-     string s1,s2;
-     cin>>n>>s1>>s2;
-     int maxno=0;
-     for(int i=0;i<n;i++)
-     {
-        if(s2[i]=='1')
-        {
-            if(s1[i]=='0')
-            {
-                maxno++;
-                s1[i]='2';
-            }
-            else if(i>0 && s1[i-1]=='1')
-            {
-                maxno++;
-                s1[i-1]='2';
-            }
-            else if(i<n-1 && s1[i+1]=='1')
-            {
-                maxno++;
-                s1[i+1]='2';
-            }
-            
-        }
-     }
-     cout<<maxno<<"\n";
- }
+ int n;
+ cin>>n;
+ 
+ cout<<1+2*n*(n-1);
  return 0;
 }
