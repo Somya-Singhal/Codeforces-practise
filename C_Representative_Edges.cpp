@@ -52,8 +52,7 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-void solve(){
-}
+
 int main()
 {
  fast_cin();
@@ -62,7 +61,7 @@ int main()
  for(int it=1;it<=t;it++) {
      int n;
      cin>>n;
-     int arr[n],presum[n];
+     float arr[n];
      for(int i=0;i<n;i++)
      {
          cin>>arr[i];
@@ -70,20 +69,20 @@ int main()
      if(n==1 || n==2)
      cout<<0<<"\n";
      else{
-     int ans=0;
-     presum[0]=arr[0];
-     for(int i=1;i<n;i++)
-     {
-         presum[i]=presum[i-1]+arr[i];
-     }
+     int ans=INT_MAX;
      for(int i=0;i<n;i++)
         {
-            for(int j=i+2;j<n;j++)
+            for(int j=i+1;j<n;j++)
             {
-                int leftsum=presum[j]-presum[i-1];
-                int rightsum=1/2*(arr[i]+arr[j])*(j-i+1);
-                if(leftsum!=rightsum)
-                ans++;
+                int currans=0;
+                for(int k=0;k<n;k++)
+                {
+                    if(i==k || j==k)
+                    continue;
+                    if((arr[j]-arr[i])*(k-i)!=(arr[k]-arr[i])*(j-i))
+                    currans++;
+                }
+                ans=min(ans,currans);
             }
         }
         cout<<ans<<"\n";
