@@ -59,28 +59,27 @@ int main()
  cin >> t;
  for(int it=1;it<=t;it++) {
     int n;
-    int l,r,c;
     cin>>n;
-    int pmin=INT_MAX,pmax=INT_MIN,cmin=INT_MAX,cmax=INT_MIN,prevprice=INT_MIN;
-    int ans=0;
+    int cmin=INT_MAX,cmax=0,len=0,costmin=INT_MAX,costmax=INT_MAX,costlen=INT_MAX;
     while(n--)
     {
+        int l,r,c;
         cin>>l>>r>>c;
-        if(l<=cmin && r>cmax)
-        ans=c;
-        else if(l==cmin && r==cmax && c<prevprice)
-        ans=c;
-        else if(l>pmax)
-        ans+=c;
-        else if(l>=pmin && r>=pmax)
-        ans+=(c<prevprice)?(c-prevprice):0;
-        else if((l<pmin && r>pmax) || l==pmax)
-        ans+=c-prevprice;
-        cmin=min(l,cmin);
-        cmax=max(r,cmax);
-        pmin=l;
-        pmax=r;
-        prevprice=c;
+        if(l<cmin)
+        cmin=l,costmin=INT_MAX;
+        if(l==cmin)
+        costmin=min(costmin,c);
+        if(r>cmax)
+        cmax=r,costmax=INT_MAX;
+        if(r==cmax)
+        costmax=min(costmax,c);
+        if(len<r-l+1)
+        len=r-l+1,costlen=INT_MAX;
+        if(len==(r-l+1))
+        costlen=min(costlen,c);
+        int ans=costmin+costmax;
+        if(len==(cmax-cmin+1))
+        ans=min(ans,costlen);
         cout<<ans<<"\n";
     }
  }
