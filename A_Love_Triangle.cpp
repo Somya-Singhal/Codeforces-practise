@@ -57,14 +57,20 @@ int main()
  fast_cin();
  int n;
  cin>>n;
- int arr[n];
- for(int i=0;i<n;i++)
+ vector<int>arr(n+1,0);
+ for(int i=1;i<=n;i++)
  cin>>arr[i];
- vector<vector<int>>adj(n+1,vector<int>());
- for(int i=0;i<n;i++)
+ bool flag=false;
+ for(int i=1;i<=n;i++)
  {
-     adj[i+1].push_back(arr[i]);
+     if(arr[arr[arr[i]]]==i)
+     {
+         flag=true;
+         cout<<"YES\n";
+         break;
+     }
  }
- 
+ if(flag==false)
+ cout<<"NO\n";
  return 0;
 }
