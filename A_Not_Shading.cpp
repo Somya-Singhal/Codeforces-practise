@@ -52,35 +52,58 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
+
 int main()
 {
  fast_cin();
  ll t;
  cin >> t;
  for(int it=1;it<=t;it++) {
-     int n;
-     cin>>n;
-     int arr[n];
-     for(int i=0;i<n;i++)
-     cin>>arr[i];
-     unordered_set<int>s;
-     for(int i=1;i<=n;i++)
-     s.insert({i});
-     for(int i=0;i<n;i++)
-     {
-        if(s.find(arr[i])!=s.end())
+    int n,m,r,c;
+    cin>>n>>m>>r>>c;
+    int countwhite=0;
+    char dp[n+1][m+1];
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=1;j<=m;j++)
         {
-           s.erase(arr[i]);
-           arr[i]=0;
+            cin>>dp[i][j];
+             if(dp[i][j]=='W')
+              countwhite++;
         }
-     }
-     for(int i=0;i<n;i++)
-     {
-         if(arr[i]!=0)
-         {
-             int num=arr[i];
-         }
-     }
+    }
+    if(countwhite==(n*m))
+    cout<<-1<<"\n";
+    else if(dp[r][c]=='B')
+    cout<<0<<"\n";
+    else{
+        bool flag=false;
+        for(int i=1;i<=m;i++)
+        {
+            if(dp[r][i]=='B')
+            {
+                 cout<<1<<"\n";
+                 flag=true;
+                 break;
+            }
+        }
+        if(flag==false)
+        {
+            for(int i=1;i<=n;i++)
+            {
+                if(dp[i][c]=='B')
+                {
+                    cout<<1<<"\n";
+                    flag=true;
+                    break;
+                }
+            }
+        }
+        if(flag==false)
+        {
+            cout<<2<<"\n";
+        }
+    }
  }
  return 0;
 }
