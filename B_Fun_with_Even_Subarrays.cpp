@@ -63,30 +63,22 @@ int main()
     int arr[n];
     for(int i=0;i<n;i++)
     cin>>arr[i];
-    unordered_set<int>m;
-    for(int i=0;i<n;i++)
-    {
-        m.insert({arr[i]});
-    }
-    if(m.size()==1)
+    if(n==1)
     cout<<0<<endl;
     else
     {
-        int len=m.size();
-        len--;
-        int ans=0,i=1;
-        if(len==1)
-        cout<<1<<endl;
-        else
-        {
-            while(len>0)
-            {
-                 len-=i;
-                 ans++;
-                 i++;
-            }
-            cout<<ans<<endl;
-        }
+        int ans=0,i=n-2;
+       while(i>=0)
+       {
+           if(arr[i]==arr[n-1])
+           {
+               i--;
+               continue;
+           }
+           ans++;
+           i=2*i-n+1;
+       }
+       cout<<ans<<endl;
     }
  }
  return 0;
