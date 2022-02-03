@@ -61,102 +61,119 @@ int main()
     cin >> t;
     for (int it = 1; it <= t; it++)
     {
+        // int n;
+        // cin >> n;
+        // if (n % 7 == 0)
+        // {
+        //     cout << n << endl;
+        // }
+        // else
+        // {
+        //    int d;
+        //    if(n/100==0)
+        //    d=2;
+        //    else
+        //    d=3;
+        //     if (d == 2)
+        //     {
+        //         int a1 = n % 10, a2 = n / 10;
+        //         bool flag = false;
+        //         for (int i = 0; i <= 9; i++)
+        //         {
+        //             int num = (a2 * 10 + i);
+        //             if (num % 7 == 0)
+        //             {
+        //                 cout << num << endl;
+        //                 flag = true;
+        //                 break;
+        //             }
+        //         }
+        //         if (flag == false)
+        //         {
+        //             for (int i = 1; i <= 9; i++)
+        //             {
+        //                 int num = i * 10 + a1;
+        //                 if (num % 7 == 0)
+        //                 {
+        //                     cout << num << endl;
+        //                     flag = true;
+        //                     break;
+        //                 }
+        //             }
+        //             if (flag == false)
+        //             {
+        //                 cout << 77 << endl;
+        //             }
+        //         }
+        //     }
+        //     if (d == 3)
+        //     {
+        //         int a1 = (n / 100) % 10, a2 = (n / 10) % 10, a3 = n % 10;
+        //         bool flag = false;
+        //         for (int i = 0; i <= 9; i++)
+        //         {
+        //             int num = a1 * 100 + a2 * 10 + i;
+        //             if (num % 7 == 0)
+        //             {
+        //                 cout << num << endl;
+        //                 flag = true;
+        //                 break;
+        //             }
+        //         }
+        //         if (flag == false)
+        //         {
+        //             for (int i = 0; i <= 9; i++)
+        //             {
+        //                 int num = a1 * 100 + i * 10 + a3;
+        //                 if (num % 7 == 0)
+        //                 {
+        //                     cout << num << endl;
+        //                     flag = true;
+        //                     break;
+        //                 }
+        //             }
+        //         }
+        //         if (flag == false)
+        //         {
+        //             for (int i = 1; i <= 9; i++)
+        //             {
+        //                 int num = i * 100 + a2 * 10 + a3;
+        //                 if (num % 7 == 0)
+        //                 {
+        //                     cout << num << endl;
+        //                     flag = true;
+        //                     break;
+        //                 }
+        //             }
+        //         }
+        //         if (flag == false)
+        //             {
+        //                 for (int i = a1 * 100; i <= 994; i++)
+        //                 {
+        //                     if (i % 7 == 0)
+        //                     {
+        //                         cout << i << endl;
+        //                         break;
+        //                     }
+        //                 }
+        //             }
+        //     }
+        // }
+        
+        //second solution
         int n;
-        cin >> n;
-        if (n % 7 == 0)
-        {
-            cout << n << endl;
-        }
+        cin>>n;
+        if(n%7==0)
+        cout<<n<<endl;
         else
         {
-           int d;
-           if(n/100==0)
-           d=2;
-           else
-           d=3;
-            if (d == 2)
+            for(int i=0;i<=9;i++)
             {
-                int a1 = n % 10, a2 = n / 10;
-                bool flag = false;
-                for (int i = 0; i <= 9; i++)
+                if((n-n%10+i)%7==0)
                 {
-                    int num = (a2 * 10 + i);
-                    if (num % 7 == 0)
-                    {
-                        cout << num << endl;
-                        flag = true;
-                        break;
-                    }
+                    cout<<(n-n%10+i)<<endl;
+                    break;
                 }
-                if (flag == false)
-                {
-                    for (int i = 1; i <= 9; i++)
-                    {
-                        int num = i * 10 + a1;
-                        if (num % 7 == 0)
-                        {
-                            cout << num << endl;
-                            flag = true;
-                            break;
-                        }
-                    }
-                    if (flag == false)
-                    {
-                        cout << 77 << endl;
-                    }
-                }
-            }
-            if (d == 3)
-            {
-                int a1 = (n / 100) % 10, a2 = (n / 10) % 10, a3 = n % 10;
-                bool flag = false;
-                for (int i = 0; i <= 9; i++)
-                {
-                    int num = a1 * 100 + a2 * 10 + i;
-                    if (num % 7 == 0)
-                    {
-                        cout << num << endl;
-                        flag = true;
-                        break;
-                    }
-                }
-                if (flag == false)
-                {
-                    for (int i = 0; i <= 9; i++)
-                    {
-                        int num = a1 * 100 + i * 10 + a3;
-                        if (num % 7 == 0)
-                        {
-                            cout << num << endl;
-                            flag = true;
-                            break;
-                        }
-                    }
-                }
-                if (flag == false)
-                {
-                    for (int i = 1; i <= 9; i++)
-                    {
-                        int num = i * 100 + a2 * 10 + a3;
-                        if (num % 7 == 0)
-                        {
-                            cout << num << endl;
-                            flag = true;
-                            break;
-                        }
-                    }
-                }
-                if (flag == false)
-                    {
-                        for (int i = a1 * 100; i <= 994; i++)
-                        {
-                            if (i % 7 == 0)
-                            {
-                                cout << i << endl;
-                                break;
-                            }
-                        }
-                    }
             }
         }
     }
