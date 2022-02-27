@@ -55,51 +55,38 @@ double eps = 1e-12;
 int main()
 {
  fast_cin();
- int C;
- cin>>C;
- cout<<C;
- vector<string>like,dislike;
- for(int i=0;i<C;i++)
- {
-     cin>>like[i];
-     cin>>dislike[i];
-     cout<<like[i];
-     cout<<dislike[i];
- }
- unordered_map<string,int>m;
- for(int i=0;i<C;i++)
- {
-     string s1=like[i];
-     int num1=s1.find(" ");
-     string first1=s1.substr(0,num1);
-     int no1=atoi(first1.c_str());
-     cout<<no1<<" ";
-     while(no1>0){
-         string item=s1.substr(0,s1.find(" "));
-         m[item]++;
-         no1--;
+ ll t;
+ cin >> t;
+ for(int it=1;it<=t;it++) {
+     string str;
+     cin>>str;
+     unordered_set<char>key;
+     bool flag=false;
+     for(int i=0;i<str.length();i++)
+     {
+         if(str[i]=='r' || str[i]=='b' || str[i]=='g')
+         key.insert({str[i]});
+         else
+         {
+             char c;
+             if(str[i]=='R')
+              c='r';
+             else if(str[i]=='G')
+              c='g';
+             else
+             c='b';
+             if(key.find(c)==key.end())
+               {
+                   cout<<"NO\n";
+                   flag=true;
+                   break;
+               }
+               if(flag==true)
+               break;
+         }
      }
-     string s2=dislike[i];
-     int num2=s2.find(" ");
-     string first2=s2.substr(0,num2);
-     int no2=atoi(first2.c_str());
-     cout<<no2<<" ";
-     while(no2>0){
-         string item=s2.substr(0,s2.find(" "));
-         m[item]--;
-         no2--;
-     }
+     if(flag==false)
+     cout<<"YES\n";
  }
- vector<string>itemsList;
- for(auto &x: m)
- {
-     if(x.second>0){
-        itemsList.push_back(x.first);
-     }
- }
- cout<<itemsList.size()<<" ";
- for(int i=0;i<itemsList.size();i++)
- cout<<itemsList[i]<<" ";
- cout<<"\n";
  return 0;
 }

@@ -55,51 +55,41 @@ double eps = 1e-12;
 int main()
 {
  fast_cin();
- int C;
- cin>>C;
- cout<<C;
- vector<string>like,dislike;
- for(int i=0;i<C;i++)
- {
-     cin>>like[i];
-     cin>>dislike[i];
-     cout<<like[i];
-     cout<<dislike[i];
- }
- unordered_map<string,int>m;
- for(int i=0;i<C;i++)
- {
-     string s1=like[i];
-     int num1=s1.find(" ");
-     string first1=s1.substr(0,num1);
-     int no1=atoi(first1.c_str());
-     cout<<no1<<" ";
-     while(no1>0){
-         string item=s1.substr(0,s1.find(" "));
-         m[item]++;
-         no1--;
+ ll t;
+ cin >> t;
+ for(int it=1;it<=t;it++) {
+     int n,k;
+     cin>>n>>k;
+     string str;
+     cin>>str;
+     vector<int>count(26,0);
+     int ans=0;
+     for(int i=0;i<str.length();i++)
+       count[str[i]-'a']++;
+     for(int i=0;i<26;i++)
+       {
+           if(count[i]!=0)
+           ans++;
+       }
+     int lo=0,hi=str.length()-1;
+     bool ispalindrome=false;
+     while(lo<=hi)
+     {
+         if(str[lo]==str[hi])
+         {
+             lo++;
+             hi--;
+         }
+         else
+         break;
      }
-     string s2=dislike[i];
-     int num2=s2.find(" ");
-     string first2=s2.substr(0,num2);
-     int no2=atoi(first2.c_str());
-     cout<<no2<<" ";
-     while(no2>0){
-         string item=s2.substr(0,s2.find(" "));
-         m[item]--;
-         no2--;
-     }
+     if(lo>=hi)
+     ispalindrome=true;
+
+     if(k<=1 || ans==1 || ispalindrome==true)
+     cout<<1<<endl;
+     else
+     cout<<2<<endl;
  }
- vector<string>itemsList;
- for(auto &x: m)
- {
-     if(x.second>0){
-        itemsList.push_back(x.first);
-     }
- }
- cout<<itemsList.size()<<" ";
- for(int i=0;i<itemsList.size();i++)
- cout<<itemsList[i]<<" ";
- cout<<"\n";
  return 0;
 }

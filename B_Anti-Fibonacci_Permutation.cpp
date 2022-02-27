@@ -55,51 +55,18 @@ double eps = 1e-12;
 int main()
 {
  fast_cin();
- int C;
- cin>>C;
- cout<<C;
- vector<string>like,dislike;
- for(int i=0;i<C;i++)
- {
-     cin>>like[i];
-     cin>>dislike[i];
-     cout<<like[i];
-     cout<<dislike[i];
- }
- unordered_map<string,int>m;
- for(int i=0;i<C;i++)
- {
-     string s1=like[i];
-     int num1=s1.find(" ");
-     string first1=s1.substr(0,num1);
-     int no1=atoi(first1.c_str());
-     cout<<no1<<" ";
-     while(no1>0){
-         string item=s1.substr(0,s1.find(" "));
-         m[item]++;
-         no1--;
-     }
-     string s2=dislike[i];
-     int num2=s2.find(" ");
-     string first2=s2.substr(0,num2);
-     int no2=atoi(first2.c_str());
-     cout<<no2<<" ";
-     while(no2>0){
-         string item=s2.substr(0,s2.find(" "));
-         m[item]--;
-         no2--;
+ ll t;
+ cin >> t;
+ for(int it=1;it<=t;it++) {
+     int n;
+     cin>>n;
+     vector<int>v(n);
+     for(int i=0;i<n;i++)
+        v.push_back(i+1);
+     for(int i=2;i<n;i++)
+     {
+        
      }
  }
- vector<string>itemsList;
- for(auto &x: m)
- {
-     if(x.second>0){
-        itemsList.push_back(x.first);
-     }
- }
- cout<<itemsList.size()<<" ";
- for(int i=0;i<itemsList.size();i++)
- cout<<itemsList[i]<<" ";
- cout<<"\n";
  return 0;
 }
